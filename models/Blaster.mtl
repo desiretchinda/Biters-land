@@ -1,0 +1,34 @@
+# Blender MTL File: 'GameCharExporter.blend'
+# Material Count: 3
+
+newmtl GunMat
+Ns 225.000000
+Ka 0.966667 0.966667 0.966667
+Kd 0.184469 0.155570 0.155570
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 3
+
+newmtl Neon
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 40.460075 2.079983 17.562092
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:\\Users\\KIROOUSER\\Desktop\\Personal\\GameJam\\NewEnvMap\\Palette.png
+map_Ke C:\\Users\\KIROOUSER\\Desktop\\Personal\\GameJam\\NewEnvMap\\Palette.png
+
+newmtl Skin
+Ns 63.999992
+Ka 1.000000 1.000000 1.000000
+Kd 0.023651 0.012765 0.007594
+Ks 0.116667 0.116667 0.116667
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2

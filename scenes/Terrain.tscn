@@ -1,0 +1,873 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/Enemi.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/Enemi.gd" type="Script" id=3]
+[ext_resource path="res://scenes/GameManager.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Terrain_final_zone.tscn" type="PackedScene" id=5]
+[ext_resource path="res://images/UI_HealthBar_Blue.png" type="Texture" id=6]
+[ext_resource path="res://images/HUD.png" type="Texture" id=7]
+[ext_resource path="res://images/129488_header.jpg" type="Texture" id=8]
+[ext_resource path="res://entities/Antidote_Collet.tscn" type="PackedScene" id=9]
+[ext_resource path="res://entities/Blaster.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/Objectif_notif.tscn" type="PackedScene" id=11]
+[ext_resource path="res://images/UI_Capsule.png" type="Texture" id=12]
+[ext_resource path="res://images/UI_Rifle.png" type="Texture" id=13]
+[ext_resource path="res://images/bg_objectif.png" type="Texture" id=14]
+[ext_resource path="res://entities/BallGun.tscn" type="PackedScene" id=15]
+[ext_resource path="res://images/Skybox.png" type="Texture" id=16]
+[ext_resource path="res://images/GameOver.png" type="Texture" id=17]
+[ext_resource path="res://images/ButtonPlay02.png" type="Texture" id=18]
+[ext_resource path="res://images/ButtonPlay.png" type="Texture" id=19]
+[ext_resource path="res://images/ButtonPlay01.png" type="Texture" id=20]
+[ext_resource path="res://images/ButtonQuit02.png" type="Texture" id=21]
+[ext_resource path="res://images/ButtonQuit.png" type="Texture" id=22]
+[ext_resource path="res://images/ButtonQuit01.png" type="Texture" id=23]
+[ext_resource path="res://images/HUD_GamePaused.jpg" type="Texture" id=24]
+[ext_resource path="res://images/UI_Blaster.png" type="Texture" id=25]
+[ext_resource path="res://scenes/Canvas.gd" type="Script" id=26]
+[ext_resource path="res://images/HUD_Victoire.jpg" type="Texture" id=27]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_texture = ExtResource( 8 )
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CylinderShape" id=4]
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 1.46005, 1, 1 )
+
+[sub_resource type="CylinderShape" id=6]
+
+[sub_resource type="BoxShape" id=7]
+
+[sub_resource type="BoxShape" id=8]
+
+[sub_resource type="BoxShape" id=9]
+
+[sub_resource type="PanoramaSky" id=10]
+radiance_size = 5
+panorama = ExtResource( 16 )
+
+[sub_resource type="Environment" id=11]
+background_mode = 2
+background_sky = SubResource( 10 )
+fog_enabled = true
+fog_color = Color( 0.0431373, 0.368627, 0.133333, 1 )
+fog_sun_color = Color( 0.972549, 0.960784, 0.32549, 1 )
+fog_sun_amount = 0.13
+fog_depth_end = 131.1
+ssao_radius2 = 3.5
+dof_blur_far_enabled = true
+dof_blur_far_distance = 1058.81
+dof_blur_far_amount = 0.0
+dof_blur_far_quality = 0
+glow_enabled = true
+
+[node name="Environment" type="Spatial" groups=[
+"enemies",
+]]
+script = ExtResource( 4 )
+nbAntidot = 5
+totalEnemies = 13
+ui_capsules = [ NodePath("Canvas/Hud_Stat/UI_Capsule1"), NodePath("Canvas/Hud_Stat/UI_Capsule2"), NodePath("Canvas/Hud_Stat/UI_Capsule3"), NodePath("Canvas/Hud_Stat/UI_Capsule4"), NodePath("Canvas/Hud_Stat/UI_Capsule5") ]
+wpList = [ NodePath("wp4"), NodePath("wp5"), NodePath("wp16"), NodePath("wp15"), NodePath("wp14"), NodePath("wp13"), NodePath("wp12"), NodePath("wp11"), NodePath("wp10"), NodePath("wp9"), NodePath("wp8"), NodePath("wp7"), NodePath("wp6") ]
+antidotList = [ NodePath("Antidote"), NodePath("Antidote2"), NodePath("Antidote3"), NodePath("Antidote4"), NodePath("Antidote5") ]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, -16.3814, 1.24513, 26.5002 )
+collision_layer = 3
+health_path = NodePath("../Canvas/Hud_Stat/PlayerHealth")
+walk_speed = 7
+sprint_speed = 13
+acceleration = 5
+deacceleration = 8
+jump_height = 8
+gameManager_path = NodePath("..")
+
+[node name="Enemi" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1312, 1, -33.3651 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Enemi12" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.0995, 1, -28.3491 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Enemi2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.71819, 1, 42.3127 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Enemi3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1605, 1, -33.976 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Enemi4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.084, 1, 6.84749 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Enemi5" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -28.3394, 1, -3.31127 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Enemi6" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.032, 0.50832, 0.127221 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Enemi7" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.79863, 1, -22.2767 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Enemi8" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -37.733, 1, 4.16004 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Enemi9" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7368, 1, -12.5765 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Enemi10" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4062, 6.15817, 27.517 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Enemi11" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1128, 1.54036, 25.1843 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Enemi13" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8332, 1.6623, -24.7989 )
+script = ExtResource( 3 )
+player_path = NodePath("../Player")
+
+[node name="Canvas" type="Control" parent="."]
+pause_mode = 2
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hud_Stat" type="TextureRect" parent="Canvas"]
+margin_top = -0.500671
+margin_right = 1920.0
+margin_bottom = 1079.5
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerHealth" type="TextureProgress" parent="Canvas/Hud_Stat"]
+margin_left = 748.519
+margin_top = 1026.68
+margin_right = 1168.52
+margin_bottom = 1072.68
+step = 10.0
+value = 100.0
+texture_progress = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UI_Capsule1" type="TextureRect" parent="Canvas/Hud_Stat"]
+visible = false
+margin_left = 42.8539
+margin_top = 980.089
+margin_right = 120.854
+margin_bottom = 1058.09
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UI_Capsule2" type="TextureRect" parent="Canvas/Hud_Stat"]
+visible = false
+margin_left = 95.8539
+margin_top = 982.089
+margin_right = 173.854
+margin_bottom = 1060.09
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UI_Capsule3" type="TextureRect" parent="Canvas/Hud_Stat"]
+visible = false
+margin_left = 147.854
+margin_top = 985.089
+margin_right = 225.854
+margin_bottom = 1063.09
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UI_Capsule4" type="TextureRect" parent="Canvas/Hud_Stat"]
+visible = false
+margin_left = 201.854
+margin_top = 988.089
+margin_right = 279.854
+margin_bottom = 1066.09
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UI_Capsule5" type="TextureRect" parent="Canvas/Hud_Stat"]
+visible = false
+margin_left = 254.854
+margin_top = 991.089
+margin_right = 332.854
+margin_bottom = 1069.09
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelAmor" type="Label" parent="Canvas/Hud_Stat"]
+margin_left = 1735.36
+margin_top = 1028.51
+margin_right = 1775.36
+margin_bottom = 1042.51
+text = "100"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_amor" type="TextureRect" parent="Canvas/Hud_Stat"]
+margin_left = 1569.76
+margin_top = 869.154
+margin_right = 1808.76
+margin_bottom = 1008.16
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_blaster" type="TextureRect" parent="Canvas/Hud_Stat"]
+visible = false
+margin_left = 1513.8
+margin_top = 879.082
+margin_right = 1769.8
+margin_bottom = 1018.08
+texture = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bgObjectif" parent="Canvas" instance=ExtResource( 11 )]
+margin_left = 8.95288
+margin_top = 27.5721
+margin_right = 386.953
+margin_bottom = 125.572
+
+[node name="bg_reason" type="TextureRect" parent="Canvas"]
+visible = false
+margin_left = 819.0
+margin_top = 915.0
+margin_right = 1096.0
+margin_bottom = 976.0
+texture = ExtResource( 14 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reason_game_over" type="Label" parent="Canvas/bg_reason"]
+margin_left = 14.8103
+margin_top = 20.9254
+margin_right = 103.81
+margin_bottom = 34.9254
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "Antidot insuffisant for all contaminated"
+
+[node name="bgGO" type="TextureRect" parent="Canvas"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 17 )
+
+[node name="btn_play" type="TextureButton" parent="Canvas/bgGO"]
+margin_left = 1409.05
+margin_top = 731.431
+margin_right = 1757.05
+margin_bottom = 854.431
+texture_normal = ExtResource( 19 )
+texture_pressed = ExtResource( 18 )
+texture_focused = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_quit" type="TextureButton" parent="Canvas/bgGO"]
+margin_left = 1409.05
+margin_top = 910.547
+margin_right = 1757.05
+margin_bottom = 1041.55
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 21 )
+texture_focused = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bgVictory" type="TextureRect" parent="Canvas"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 27 )
+
+[node name="btn_continue" type="TextureButton" parent="Canvas/bgVictory"]
+margin_left = 1305.45
+margin_top = 839.8
+margin_right = 1699.45
+margin_bottom = 1065.8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bgPause" type="TextureRect" parent="Canvas"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 24 )
+
+[node name="btn_resume" type="TextureButton" parent="Canvas/bgPause"]
+margin_left = 701.0
+margin_top = 353.0
+margin_right = 1243.0
+margin_bottom = 815.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Walls" type="Spatial" parent="."]
+visible = false
+
+[node name="StaticBody" type="StaticBody" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 6.69132, 0, 0, 0, 50.1668, 41.9249, 5.81634, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/StaticBody"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/StaticBody"]
+shape = SubResource( 3 )
+
+[node name="StaticBody2" type="StaticBody" parent="Walls"]
+transform = Transform( 1, 0, 0, 0, 6.69132, 0, 0, 0, 50.1668, -48.6586, 5.81634, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/StaticBody2"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/StaticBody2"]
+shape = SubResource( 3 )
+
+[node name="StaticBody3" type="StaticBody" parent="Walls"]
+transform = Transform( -1.62921e-07, 0, 50.1668, 0, 6.69132, 0, -1, 0, -8.17321e-06, 0.149139, 5.81634, 36.7749 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/StaticBody3"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/StaticBody3"]
+shape = SubResource( 3 )
+
+[node name="StaticBody4" type="StaticBody" parent="Walls"]
+transform = Transform( -1.62921e-07, 0, 50.1668, 0, 6.69132, 0, -1, 0, -8.17321e-06, 0.149139, 5.81634, -37.8573 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Walls/StaticBody4"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Walls/StaticBody4"]
+shape = SubResource( 3 )
+
+[node name="Blaster" parent="." instance=ExtResource( 10 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 27.8426, 4.53343, 7.94526 )
+visible = false
+
+[node name="wp4" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5178, 1.0125, 14.1155 )
+
+[node name="wp5" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 37.325, 1.0125, -35.3006 )
+
+[node name="wp6" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.173, 1.0125, 34.1381 )
+
+[node name="wp7" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2955, 6.10911, -25.539 )
+
+[node name="wp8" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -31.2578, 1.0125, 23.8831 )
+
+[node name="wp9" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7373, 1.0125, -4.97751 )
+
+[node name="wp10" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.177, 5.88842, 20.7608 )
+
+[node name="wp11" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1275, 1.0125, 16.145 )
+
+[node name="wp12" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1474, 1.07294, 22.2114 )
+
+[node name="wp13" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.1986, 1.0125, -20.3527 )
+
+[node name="wp14" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7166, 5.36464, 4.68695 )
+
+[node name="wp15" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7927, 1.0125, 17.9743 )
+
+[node name="wp16" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.62932, 0.651288, -7.12008 )
+
+[node name="Antidote" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.768716, 0 )
+tipeCollectable = 1
+
+[node name="Antidote2" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.768716, 0 )
+tipeCollectable = 1
+
+[node name="Antidote3" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.768716, 0 )
+tipeCollectable = 1
+
+[node name="Antidote4" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.768716, 0 )
+tipeCollectable = 1
+
+[node name="Antidote5" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.768716, 0 )
+tipeCollectable = 1
+
+[node name="BallGun" parent="." instance=ExtResource( 15 )]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -30.3444, 0.492112, 12.2642 )
+
+[node name="Terrain_blender" parent="." instance=ExtResource( 5 )]
+
+[node name="StaticBody" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 6.50947, 0, 0, 0, 5.07258, 0, 0, 0, 7.23042, 28.3507, 0, -27.7136 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody"]
+transform = Transform( 1.10088, 0, 0, 0, 0.717874, 0, 0, 0, 1, 0.0594444, 0.28879, -0.0179744 )
+shape = SubResource( 4 )
+
+[node name="StaticBody2" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 6.50947, 0, 0, 0, 5.07258, 0, 0, 0, 7.23042, 28.3507, 0, -27.7136 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody2"]
+transform = Transform( 0.098007, 0, 0, 0, 0.717872, 0, 0, 0, 2.90539, 0.161634, 0.28441, 3.86797 )
+shape = SubResource( 5 )
+
+[node name="StaticBody4" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 6.50947, 0, 0, 0, 5.07258, 0, 0, 0, 7.23042, 29.2811, 0, -16.6709 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody4"]
+transform = Transform( 0.098007, 0, 0, 0, 0.717872, 0, 0, 0, 2.90539, 0.161634, 0.28441, 3.86797 )
+shape = SubResource( 5 )
+
+[node name="StaticBody3" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 6.50947, 0, 0, 0, 5.07258, 0, 0, 0, 7.23042, 28.3507, 0, -27.7136 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody3"]
+transform = Transform( 0.098007, 0, 0, 0, 0.584334, 0, 0, 0, 3.66864, 0.31034, 1.47383, 4.61641 )
+shape = SubResource( 5 )
+
+[node name="StaticBody5" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 6.50947, 0, 0, 0, 5.07258, 0, 0, 0, 0.199858, 28.3507, 0, 30.5779 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Terrain_blender/StaticBody5"]
+transform = Transform( 2.57, 0, 0, 0, 1.115, 0, 0, 0, 0.976, -4.66883, 0.960198, -305.387 )
+shape = SubResource( 5 )
+
+[node name="StaticBody7" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 6.50947, 0, 0, 0, 5.07258, 0, 0, 0, 0.199858, 28.3507, -5.44863, 31.3353 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Terrain_blender/StaticBody7"]
+transform = Transform( 2.57, 0, 0, 0, 1.115, 0, 0, 0, 2.06755, -4.71971, 0.960197, -306.264 )
+shape = SubResource( 5 )
+
+[node name="StaticBody6" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 6.50947, 0, 0, 0, 5.07258, 0, 0, 0, 0.199858, 28.3507, 0, 30.5779 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody6"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, -1.67674, 0.960198, 4.61641 )
+shape = SubResource( 5 )
+
+[node name="StaticBody8" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 6.5, 0, 0, 0, 5.073, 0, 0, 0, 2.35, 17.2618, -0.436526, 23.6702 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody8"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody9" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -0.075, 0, 0, 0, 5.073, -1.3638e-07, 0, 4.43496e-07, 1.56, 3.59644, 4.69097, 26.5281 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody9"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody10" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -0.075, 0, 0, 0, 5.073, -1.3638e-07, 0, 8.78927e-08, 0.309163, 1.13296, 4.69097, 21.9363 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody10"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody11" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -0.5345, 0, 0, 0, 5.073, -1.3638e-07, 0, 2.01113e-08, 0.0707417, 2.40747, 4.69097, 21.065 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody11"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody13" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -6.52, 0, 0, 0, 5.073, 1.07207e-08, 0, -7.66002e-07, 0.071, -12.8922, 4.69097, 22.8645 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody13"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, -8.88178e-16, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody12" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -0.633869, 0, 0, 0, 5.073, -1.3638e-07, 0, 2.87249e-08, 0.10104, 2.0789, -0.499848, 20.6409 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody12"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody14" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -6.5, 0, 0, 0, 5.073, -1.6836e-07, 0, 7.66002e-07, 1.115, -13.0123, -0.536948, 19.0857 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody14"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody15" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -1.87763, 0, 0, 0, 5.073, -1.6836e-07, 0, 1.22303e-06, 1.78026, -13.3882, -0.536948, 3.23558 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody15"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody16" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -1.87763, 0, 0, 0, 5.073, -1.6836e-07, 0, 1.22303e-06, 1.78026, -13.3882, -0.536948, 3.23558 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody16"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody17" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -4.3, 0, 0, 0, 5.073, -2.68773e-07, 0, 7.66002e-07, 1.78, -13.3882, -0.536948, -14.9175 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody17"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody18" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -4.3, 0, 0, 0, 5.073, -2.68773e-07, 0, 7.66002e-07, 1.78, -27.0578, 3.65503, -14.9175 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody18"]
+transform = Transform( 1.57878, 0, 0, 0, 1.11476, 2.00491e-08, 0, 4.94819e-08, 4.04705, -0.129674, -0.834364, -0.104725 )
+shape = SubResource( 6 )
+
+[node name="StaticBody19" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -1.89074, 0, 0, 0, 0.214739, -1.13771e-08, 0, 3.55513e-07, 0.826124, -13.2833, 4.84544, -5.73108 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody19"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody20" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -2.91079, 0, 0, 0, 1.42081, -7.52761e-08, 0, 2.17119e-08, 0.0504531, -3.99336, 1.51814, -2.66998 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody20"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody21" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -1.78188, 0, 0, 0, 1.42081, -7.52761e-08, 0, 2.17119e-08, 0.0504531, -5.64904, 1.51814, 5.03107 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody21"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody22" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -0.114376, 0, 0, 0, 1.42081, -7.52761e-08, 0, 4.31277e-07, 1.00218, 2.19919, 1.51814, 1.3511 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody22"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody23" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -0.46154, 0, 0, 0, 1.42081, -7.52761e-08, 0, 2.69074e-07, 0.625262, 3.28493, 0.521906, -0.446915 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody23"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody24" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -0.0414843, 0, 0, 0, 0.482858, -2.55823e-08, 0, 1.48641e-07, 0.345405, -7.25729, 0.363687, 6.47078 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody24"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody25" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -0.0414843, 0, 0, 0, 0.482858, -2.55823e-08, 0, 1.48641e-07, 0.345405, -4.60878, 0.363687, 6.47078 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody25"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody26" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -0.0414843, 0, 0, 0, 0.482858, -2.55823e-08, 0, 1.48641e-07, 0.345405, -1.8765, 0.363687, 6.47078 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody26"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody27" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -1.31037, 0, 0, 0, 0.482858, -2.55823e-08, 0, 1.12373e-08, 0.0261127, -4.54357, 0.363687, 7.75004 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody27"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody31" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.0414695, 3.96879e-09, 0.00922248, 0, 0.482858, -2.55823e-08, 0.00110765, -1.48588e-07, -0.345282, 3.97037, 0.363687, -4.37889 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody31"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody30" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.0414695, 3.96879e-09, 0.00922248, 0, 0.482858, -2.55823e-08, 0.00110765, -1.48588e-07, -0.345282, 1.3228, 0.363687, -4.44961 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody30"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody29" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.0414695, 3.96879e-09, 0.00922248, 0, 0.482858, -2.55823e-08, 0.00110765, -1.48588e-07, -0.345282, -1.40851, 0.363687, -4.52256 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody29"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody28" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 1.3099, 3.00041e-10, 0.000697222, 0, 0.482858, -2.55823e-08, 0.0349874, -1.12333e-08, -0.0261034, 1.29177, 0.363687, -5.73015 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody28"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody32" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -1.8176, 0, 0, 0, -0.184007, 0, 0, 0, -0.39007, 9.37475, 4.9575, 14.384 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody32"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody34" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -2.12683, -0.13644, 0, 1.19869, -0.141414, 0, 0, 0, -0.39007, 17.6198, 2.51602, 14.384 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody34"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody33" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.162659, 0, 0, 0, -1.98066, 0, 0, 0, -0.0961769, 5.99129, 2.07612, 13.3222 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody33"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="StaticBody35" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.458551, 0, 0, 0, -1.98066, 0, 0, 0, -0.270664, 13.9893, 1.65523, 14.049 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody35"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="StaticBody36" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.458551, 0, 0, 0, -1.98066, 0, 0, 0, -0.270664, 15.2768, 0.881952, 14.049 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody36"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="StaticBody37" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.458551, 0, 0, 0, -1.98066, 0, 0, 0, -0.270664, 16.5605, 0.296607, 14.049 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody37"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="StaticBody38" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.458551, 0, 0, 0, -1.98066, 0, 0, 0, -0.270664, 17.8337, -0.418144, 14.049 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody38"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="StaticBody39" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.458551, 0, 0, 0, -1.98066, 0, 0, 0, -0.270664, 19.0768, -1.15385, 14.049 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody39"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="StaticBody40" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.458551, 0, 0, 0, -1.98066, 0, 0, 0, -0.270664, 20.3063, -1.78038, 14.049 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody40"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="StaticBody51" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 5.40776, 0, 0, 0, -1.98066, 0, 0, 0, -0.270664, 22.1654, 5.60425, 30.3909 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody51"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="StaticBody55" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.817653, 0, 0, 0, -1.98066, 0, 0, 0, -0.417101, 27.701, 1.88731, 7.75729 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody55"]
+transform = Transform( 1.46042, 0, 0, 0, 1.11476, 0, 0, 0, 3.66864, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="StaticBody41" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.458551, 0, 0, 0, -2.95684, 0, 0, 0, -3.85563, 35.6641, 7.72646, -28.7509 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody41"]
+shape = SubResource( 8 )
+
+[node name="StaticBody42" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.313987, 0, 2.80994, 0, -2.95684, 0, 0.334187, 0, -2.6401, 32.7952, 7.37233, -22.2929 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody42"]
+shape = SubResource( 8 )
+
+[node name="StaticBody43" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.275611, 0, -3.08147, 0, -2.95684, 0, -0.36648, 0, -2.31742, 32.7952, 7.37233, -33.3735 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody43"]
+shape = SubResource( 8 )
+
+[node name="StaticBody44" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -0.307382, 0, -3.85182, 0, -2.95684, 0, -0.372424, 0, 2.26225, 25.9973, 7.54027, -33.1495 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody44"]
+shape = SubResource( 8 )
+
+[node name="StaticBody54" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -0.0419273, 0, -4.27793, 0, -2.95684, 0, -0.457002, 0, 0.316663, -26.6594, 7.72646, -20.9377 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody54"]
+shape = SubResource( 8 )
+
+[node name="StaticBody52" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( -0.450885, 0, -0.702036, 0, -2.95684, 0, -0.0834933, 0, 3.79118, -32.0087, 7.37233, -16.3393 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody52"]
+shape = SubResource( 8 )
+
+[node name="StaticBody45" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.48289, 0, 0, 0, 7.58721, 0, 0, 0, 3.06851, -43.3573, 2.90009, 3.22049 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody45"]
+shape = SubResource( 8 )
+
+[node name="StaticBody46" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.460962, 0, 0.914184, 0, 7.58721, 0, -0.143865, 0, 2.92916, -42.4095, 2.90009, 8.89703 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody46"]
+shape = SubResource( 8 )
+
+[node name="StaticBody47" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.460962, 0, 0.914184, 0, 7.58721, 0, -0.143865, 0, 2.92916, -42.4095, 2.90009, 8.89703 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody47"]
+shape = SubResource( 8 )
+
+[node name="StaticBody48" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.48289, 0, 0, 0, 7.58721, 0, 0, 0, 3.06851, -36.3545, -1.14931, 13.1134 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody48"]
+transform = Transform( 14.3888, 0, 0.276035, 0, 1, 0, 1.82024, 0, -0.267776, 2.12869, 0.538141, 1.48932 )
+shape = SubResource( 9 )
+
+[node name="StaticBody49" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.047038, 0, -3.05391, 0, 7.58721, 0, 0.480594, 0, 0.298901, -34.1433, -1.14931, -8.68202 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody49"]
+transform = Transform( 14.3888, 0, 0.276035, 0, 1, 0, 1.82024, 0, -0.267776, 2.12869, 0.538141, 1.48932 )
+shape = SubResource( 9 )
+
+[node name="StaticBody50" type="StaticBody" parent="Terrain_blender"]
+transform = Transform( 0.912323, 0, 0, 0, 7.00261, 0, 0, 0, 1.30278, -27.57, 5.08833, 23.0204 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Terrain_blender/StaticBody50"]
+shape = SubResource( 8 )
+
+[node name="PinkOmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29761, 4.57025, -14.3868 )
+light_color = Color( 0.643137, 0.32549, 0.698039, 1 )
+light_energy = 10.0
+light_indirect_energy = 2.62
+light_specular = 0.51
+shadow_bias = 0.03
+omni_range = 25.0471
+
+[node name="PinkOmniLight2" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.2161, 9.84196, 23.1578 )
+light_color = Color( 0.643137, 0.32549, 0.698039, 1 )
+light_energy = 10.0
+light_indirect_energy = 2.62
+omni_range = 25.0471
+
+[node name="BlueOmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -39.3321, 5.86906, 4.67633 )
+light_color = Color( 0.32549, 0.713726, 0.968627, 1 )
+light_energy = 4.39
+omni_range = 50.1106
+
+[node name="BlueOmniLight2" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8111, 9.32669, -30.1562 )
+light_color = Color( 0.32549, 0.713726, 0.968627, 1 )
+light_energy = 4.39
+omni_range = 23.9749
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 11 )
+[connection signal="pressed" from="Canvas/bgGO/btn_play" to="." method="_on_btn_play_pressed"]
+[connection signal="pressed" from="Canvas/bgGO/btn_quit" to="." method="_on_btn_quit_pressed"]
+[connection signal="pressed" from="Canvas/bgVictory/btn_continue" to="." method="_on_btn_continue_pressed"]
+[connection signal="pressed" from="Canvas/bgPause/btn_resume" to="Canvas" method="_on_btn_resume_pressed"]
+[connection signal="body_entered" from="BallGun" to="BallGun" method="_on_Antidote_body_entered"]

@@ -1,0 +1,210 @@
+{
+    "asset" : {
+        "copyright" : "Luistar",
+        "generator" : "Khronos glTF Blender I/O v1.0.5",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Gun",
+            "scale" : [
+                3.581660509109497,
+                3.581660509109497,
+                3.581660509109497
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "GunMat",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.18446916341781616,
+                    0.15556980669498444,
+                    0.15556980669498444,
+                    1
+                ],
+                "metallicFactor" : 0.9666666388511658,
+                "roughnessFactor" : 0.5
+            }
+        },
+        {
+            "doubleSided" : true,
+            "name" : "Neon",
+            "pbrMetallicRoughness" : {
+                "baseColorTexture" : {
+                    "index" : 0,
+                    "texCoord" : 0
+                },
+                "metallicFactor" : 0,
+                "roughnessFactor" : 0.5
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Curve.001",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                },
+                {
+                    "attributes" : {
+                        "POSITION" : 4,
+                        "NORMAL" : 5,
+                        "TEXCOORD_0" : 6
+                    },
+                    "indices" : 7,
+                    "material" : 1
+                }
+            ]
+        }
+    ],
+    "textures" : [
+        {
+            "source" : 0
+        }
+    ],
+    "images" : [
+        {
+            "mimeType" : "image/png",
+            "name" : "Palette",
+            "uri" : "Palette.png"
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 4517,
+            "max" : [
+                0.024412721395492554,
+                0.09802012890577316,
+                0.26834428310394287
+            ],
+            "min" : [
+                -0.024412717670202255,
+                -0.03460605442523956,
+                -0.07294510304927826
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 4517,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 4517,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 7596,
+            "type" : "SCALAR"
+        },
+        {
+            "bufferView" : 4,
+            "componentType" : 5126,
+            "count" : 1291,
+            "max" : [
+                0.028875622898340225,
+                0.07931303232908249,
+                0.12415333092212677
+            ],
+            "min" : [
+                -0.010938551276922226,
+                0.027424968779087067,
+                -0.04904596507549286
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 5,
+            "componentType" : 5126,
+            "count" : 1291,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 6,
+            "componentType" : 5126,
+            "count" : 1291,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 7,
+            "componentType" : 5123,
+            "count" : 1968,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 54204,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 54204,
+            "byteOffset" : 54204
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 36136,
+            "byteOffset" : 108408
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 15192,
+            "byteOffset" : 144544
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 15492,
+            "byteOffset" : 159736
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 15492,
+            "byteOffset" : 175228
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 10328,
+            "byteOffset" : 190720
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 3936,
+            "byteOffset" : 201048
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 204984,
+            "uri" : "Blaster.bin"
+        }
+    ]
+}

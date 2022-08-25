@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://images/greenHealthBar.png" type="Texture" id=1]
+[ext_resource path="res://entities/healthBar2d.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/HealthBar3d.gd" type="Script" id=3]
+[ext_resource path="res://entities/healthBar2d.gd" type="Script" id=4]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+params_billboard_mode = 1
+
+[node name="HealthBar3d" type="Sprite3D"]
+material_override = SubResource( 1 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 100, 10 )
+transparent_bg = true
+usage = 0
+render_target_v_flip = true
+
+[node name="healthBar2d" parent="Viewport" instance=ExtResource( 2 )]
+script = ExtResource( 4 )

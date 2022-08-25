@@ -1,0 +1,123 @@
+{
+    "asset" : {
+        "copyright" : "Luistar",
+        "generator" : "Khronos glTF Blender I/O v1.0.5",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Tranquilizer",
+            "scale" : [
+                0.0466352142393589,
+                0.0466352142393589,
+                0.03762757033109665
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "GunMat",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.18446916341781616,
+                    0.15556980669498444,
+                    0.15556980669498444,
+                    1
+                ],
+                "metallicFactor" : 0.9666666388511658,
+                "roughnessFactor" : 0.5
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Tranquilizer",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 4761,
+            "max" : [
+                0.7370807528495789,
+                2.768012285232544,
+                7.635208606719971
+            ],
+            "min" : [
+                -0.7370807528495789,
+                -2.4431381225585938,
+                -2.724329948425293
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 4761,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 4761,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 10746,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 57132,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 57132,
+            "byteOffset" : 57132
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 38088,
+            "byteOffset" : 114264
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 21492,
+            "byteOffset" : 152352
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 173844,
+            "uri" : "Tranquilizer.bin"
+        }
+    ]
+}

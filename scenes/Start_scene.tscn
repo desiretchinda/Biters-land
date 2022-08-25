@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/Start_scene.gd" type="Script" id=1]
+[ext_resource path="res://images/HUD_Wallpaper.jpg" type="Texture" id=2]
+[ext_resource path="res://images/ButtonPlay.png" type="Texture" id=3]
+[ext_resource path="res://images/ButtonPlay02.png" type="Texture" id=4]
+[ext_resource path="res://images/ButtonCredits.png" type="Texture" id=5]
+[ext_resource path="res://images/ButtonCredits02.png" type="Texture" id=6]
+[ext_resource path="res://images/ButtonQuit.png" type="Texture" id=7]
+[ext_resource path="res://images/ButtonQuit02.png" type="Texture" id=8]
+[ext_resource path="res://images/ButtonQuit01.png" type="Texture" id=9]
+[ext_resource path="res://images/ButtonPlay01.png" type="Texture" id=10]
+[ext_resource path="res://images/ButtonCredits01.png" type="Texture" id=11]
+[ext_resource path="res://images/HUD_Credits.jpg" type="Texture" id=12]
+[ext_resource path="res://images/HUD_DiapoHistoire.jpg" type="Texture" id=13]
+
+[node name="Start_Scene" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_Play" type="TextureButton" parent="bg"]
+margin_left = 1335.77
+margin_top = 282.504
+margin_right = 1683.77
+margin_bottom = 405.504
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_focused = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_Credits" type="TextureButton" parent="bg"]
+margin_left = 1336.57
+margin_top = 410.105
+margin_right = 1684.57
+margin_bottom = 533.105
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_focused = ExtResource( 11 )
+
+[node name="btn_Quit" type="TextureButton" parent="bg"]
+margin_left = 1335.77
+margin_top = 530.321
+margin_right = 1683.77
+margin_bottom = 661.321
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_focused = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg_credit" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_back" type="TextureButton" parent="bg_credit"]
+margin_left = 1371.0
+margin_top = 833.0
+margin_right = 1765.0
+margin_bottom = 1064.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bg_story" type="TextureRect" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_Play_now" type="TextureButton" parent="bg_story"]
+margin_left = 1302.1
+margin_top = 835.65
+margin_right = 1696.1
+margin_bottom = 1066.65
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="bg/btn_Play" to="." method="_on_btn_Play_pressed"]
+[connection signal="button_down" from="bg/btn_Credits" to="." method="_on_btn_Credits_button_down"]
+[connection signal="button_down" from="bg/btn_Quit" to="." method="_on_btn_Quit_button_down"]
+[connection signal="pressed" from="bg_credit/btn_back" to="." method="_on_btn_back_pressed"]
+[connection signal="pressed" from="bg_story/btn_Play_now" to="." method="_on_btn_Play_now_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/DC-17 HandGun [18.03.18_free].obj-a2458bae20537739cd6459018364a939.mesh"
+
+[deps]
+
+files=[ "res://.import/DC-17 HandGun [18.03.18_free].obj-a2458bae20537739cd6459018364a939.mesh" ]
+
+source_file="res://models/DC-17 HandGun [18.03.18_free].obj"
+dest_files=[ "res://.import/DC-17 HandGun [18.03.18_free].obj-a2458bae20537739cd6459018364a939.mesh", "res://.import/DC-17 HandGun [18.03.18_free].obj-a2458bae20537739cd6459018364a939.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
